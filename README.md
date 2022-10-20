@@ -5,20 +5,24 @@
 </p>
 
 <h1 align="center">
-  👋️ Create React App Codely template example
+  🎛️ DevDash 
 </h1>
 
 <p align="center">
-    <a href="https://github.com/${YOUR_ORG_SLUG}/${YOUR_REPO_SLUG}/actions/workflows/ci.yml"><img src="https://github.com/${YOUR_ORG_SLUG}/${YOUR_REPO_SLUG}/actions/workflows/ci.yml/badge.svg" alt="Build status"/></a>
+    <a href="https://github.com/CodelyTV/DevDash/actions/workflows/test.yml"><img src="https://github.com/CodelyTV/DevDash/actions/workflows/test.yml/badge.svg" alt="Build status"/></a>
     <a href="https://github.com/CodelyTV"><img src="https://img.shields.io/badge/CodelyTV-OS-green.svg?style=flat-square" alt="Codely Open Source"/></a>
     <a href="https://pro.codely.com"><img src="https://img.shields.io/badge/CodelyTV-PRO-black.svg?style=flat-square" alt="CodelyTV Courses"/></a>
+</p>
+
+<p align="center">
+  Developer dashboard focused on learning React appling best practices.
 </p>
 
 <p align="center">
   App created with the <a href="https://github.com/CodelyTV/cra-template-codely">🌱⚛️ Create React App Codely template</a> 
   <br />
   <br />
-  <a href="https://github.com/${YOUR_ORG_SLUG}/${YOUR_REPO_SLUG}/stargazers">Stars are welcome 😊</a>
+  <a href="https://github.com/CodelyTV/DevDash/stargazers">Stars are welcome 😊</a>
 </p>
 
 ## 🚀 Run the app
