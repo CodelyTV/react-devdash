@@ -25,6 +25,6 @@
     "src",
     "tests",
     "jest.config.js",
-  ],
-  "exclude": [ "cypress.config.ts" ]
+    "cypress.config.ts"
+  ]
 }
