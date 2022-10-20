@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/CodelyTV/devdash/issues"
   },
-  "homepage": "https://github.com/CodelyTV/devdash#readme",
+  "homepage": ".",
 	"dependencies": {
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
