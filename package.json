@@ -6,16 +6,16 @@
 		"node": "^16.0.0",
 		"npm": "^8.0.0"
 	},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CodelyTV/devdash"
-  },
-  "author": "codelytv",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/CodelyTV/devdash/issues"
-  },
-  "homepage": ".",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodelyTV/devdash"
+	},
+	"author": "codelytv",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/CodelyTV/devdash/issues"
+	},
+	"homepage": ".",
 	"dependencies": {
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
@@ -41,6 +41,10 @@
 			"project": [
 				"./tsconfig.json"
 			]
+		},
+		"rules": {
+			"@typescript-eslint/no-floating-promises": 0,
+			"react/jsx-key": "error"
 		},
 		"settings": {
 			"import/resolver": {
