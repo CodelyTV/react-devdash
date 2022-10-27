@@ -23,21 +23,17 @@ export class GitHubApiGitHubRepositoryRepository {
 	}
 
 	private async searchBy(repositoryId: RepositoryId): Promise<GitHubApiResponses> {
-		const setOrganization = (endpoint: string) =>
-			endpoint.replace("$organization", repositoryId.organization);
-		const setName = (endpoint: string) => endpoint.replace("$name", repositoryId.name);
-		const fetchFromGitHub = (url: string) =>
-			fetch(url, {
-				headers: { Authorization: `Bearer ${this.personalAccessToken}` },
-			});
+		const repositoryRequests = this.endpoints
+			.map((endpoint) => endpoint.replace("$organization", repositoryId.organization))
+			.map((endpoint) => endpoint.replace("$name", repositoryId.name))
+			.map((url) =>
+				fetch(url, {
+					headers: { Authorization: `Bearer ${this.personalAccessToken}` },
+				})
+			);
 
-		const requests = this.endpoints.map(setOrganization).map(setName).map(fetchFromGitHub);
-
-		const toJson = (responses: Response[]) =>
-			Promise.all(responses.map((response) => response.json()));
-
-		return Promise.all(requests)
-			.then(toJson)
+		return Promise.all(repositoryRequests)
+			.then((responses) => Promise.all(responses.map((response) => response.json())))
 			.then(([repositoryData, pullRequests, ciStatus]) => {
 				return {
 					repositoryData: repositoryData as RepositoryData,
