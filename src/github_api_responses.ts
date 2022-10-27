@@ -4,7 +4,7 @@ const dotlyResponses = {
 		node_id: "MDEwOlJlcG9zaXRvcnkyMzY4NjM0NzU=",
 		name: "dotly",
 		full_name: "CodelyTV/dotly",
-		private: false,
+		private: true,
 		owner: {
 			login: "CodelyTV",
 			id: 14278228,
