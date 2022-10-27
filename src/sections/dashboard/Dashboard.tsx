@@ -1,4 +1,4 @@
-import { githubApiResponses } from "../../github_api_responses";
+import { InMemoryGitHubRepositoryRepository } from "../../infrastructure/InMemoryGitHubRepositoryRepository";
 import { ReactComponent as Brand } from "./brand.svg";
 import { ReactComponent as Check } from "./check.svg";
 import styles from "./Dashboard.module.scss";
@@ -29,6 +29,10 @@ const isoToReadableDate = (lastUpdate: string): string => {
 };
 
 export function Dashboard() {
+	const repository = new InMemoryGitHubRepositoryRepository();
+
+	const repositories = repository.search();
+
 	return (
 		<>
 			<header className={styles.header}>
@@ -38,7 +42,7 @@ export function Dashboard() {
 				</section>
 			</header>
 			<section className={styles.container}>
-				{githubApiResponses.map((widget) => (
+				{repositories.map((widget) => (
 					<article className={styles.widget} key={widget.repositoryData.id}>
 						<header className={styles.widget__header}>
 							<a
