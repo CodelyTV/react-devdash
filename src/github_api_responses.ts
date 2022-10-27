@@ -151,7 +151,7 @@ const dotlyResponses = {
 		network_count: 85,
 		subscribers_count: 21,
 	},
-	pullRequest: [
+	pullRequests: [
 		{
 			url: "https://api.github.com/repos/CodelyTV/dotly/pulls/220",
 			id: 1006092461,
@@ -1966,7 +1966,7 @@ const dotlyResponses = {
 			active_lock_reason: null,
 		},
 	],
-	CiStatus: {
+	ciStatus: {
 		total_count: 795,
 		workflow_runs: [
 			{
@@ -2371,8 +2371,8 @@ const eslintPluginHexagonalArchitecturaResponses = {
 		network_count: 5,
 		subscribers_count: 4,
 	},
-	pullRequest: [],
-	CiStatus: {
+	pullRequests: [],
+	ciStatus: {
 		total_count: 22,
 		workflow_runs: [
 			{
@@ -2831,7 +2831,7 @@ const refactoringCodeSmellsResponses = {
 		network_count: 110,
 		subscribers_count: 10,
 	},
-	pullRequest: [
+	pullRequests: [
 		{
 			url: "https://api.github.com/repos/CodelyTV/refactoring-code-smells/pulls/50",
 			id: 998721584,
@@ -6971,7 +6971,7 @@ const refactoringCodeSmellsResponses = {
 			active_lock_reason: null,
 		},
 	],
-	CiStatus: {
+	ciStatus: {
 		total_count: 0,
 		workflow_runs: [],
 	},
