@@ -1,5 +1,8 @@
+import { useEffect, useState } from "react";
+
 import { config } from "../../devdash_config";
 import { GitHubApiGitHubRepositoryRepository } from "../../infrastructure/GitHubApiGitHubRepositoryRepository";
+import { GitHubApiResponses } from "../../infrastructure/GitHubApiResponse";
 import { ReactComponent as Brand } from "./brand.svg";
 import { ReactComponent as Check } from "./check.svg";
 import styles from "./Dashboard.module.scss";
@@ -31,10 +34,16 @@ const isoToReadableDate = (lastUpdate: string): string => {
 
 const repository = new GitHubApiGitHubRepositoryRepository(config.github_access_token);
 
-export async function Dashboard() {
-	const repositories = await repository.search(
-		config.widgets.map((widget) => widget.repository_url)
-	);
+export function Dashboard() {
+	const [repositoryData, setRepositoryData] = useState<GitHubApiResponses[]>([]);
+
+	useEffect(() => {
+		repository
+			.search(config.widgets.map((widget) => widget.repository_url))
+			.then((repositoryData) => {
+				setRepositoryData(repositoryData);
+			});
+	}, []);
 
 	return (
 		<>
@@ -45,7 +54,7 @@ export async function Dashboard() {
 				</section>
 			</header>
 			<section className={styles.container}>
-				{repositories.map((widget) => (
+				{repositoryData.map((widget) => (
 					<article className={styles.widget} key={widget.repositoryData.id}>
 						<header className={styles.widget__header}>
 							<a
