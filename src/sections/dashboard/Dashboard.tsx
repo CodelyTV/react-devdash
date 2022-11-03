@@ -1,4 +1,5 @@
-import { InMemoryGitHubRepositoryRepository } from "../../infrastructure/InMemoryGitHubRepositoryRepository";
+import { config } from "../../devdash_config";
+import { GitHubApiGitHubRepositoryRepository } from "../../infrastructure/GitHubApiGitHubRepositoryRepository";
 import { ReactComponent as Brand } from "./brand.svg";
 import { ReactComponent as Check } from "./check.svg";
 import styles from "./Dashboard.module.scss";
@@ -28,10 +29,12 @@ const isoToReadableDate = (lastUpdate: string): string => {
 	return `${diffDays} days ago`;
 };
 
-export function Dashboard() {
-	const repository = new InMemoryGitHubRepositoryRepository();
+const repository = new GitHubApiGitHubRepositoryRepository(config.github_access_token);
 
-	const repositories = repository.search();
+export async function Dashboard() {
+	const repositories = await repository.search(
+		config.widgets.map((widget) => widget.repository_url)
+	);
 
 	return (
 		<>
