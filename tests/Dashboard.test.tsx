@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import { githubApiResponses } from "../src/github_api_responses";
+import { GitHubRepository } from "../src/domain/GitHubRepository";
 import { GitHubApiGitHubRepositoryRepository } from "../src/infrastructure/GitHubApiGitHubRepositoryRepository";
 import { Dashboard } from "../src/sections/dashboard/Dashboard";
 
@@ -10,9 +10,27 @@ const mockRepository =
 
 describe("Dashboard section", () => {
 	it("show all widgets", async () => {
+		const gitHubRepository: GitHubRepository = {
+			id: {
+				organization: "CodelyTv",
+				name: "dotly",
+			},
+			description: "🌚 Modular and easy to customize dotfiles framework",
+			url: "https://github.com/CodelyTV/dotly",
+			private: true,
+			forks: 132,
+			hasWorkflows: true,
+			isLastWorkflowSuccess: false,
+			stars: 4000,
+			issues: 12,
+			pullRequests: 1,
+			updatedAt: new Date(),
+			watchers: 134,
+		};
+
 		mockRepository.mockImplementationOnce(() => {
 			return {
-				search: () => Promise.resolve(githubApiResponses),
+				search: () => Promise.resolve([gitHubRepository]),
 			} as unknown as GitHubApiGitHubRepositoryRepository;
 		});
 
@@ -22,7 +40,7 @@ describe("Dashboard section", () => {
 			name: new RegExp("DevDash_", "i"),
 		});
 
-		const firstWidgetTitle = `${githubApiResponses[0].repositoryData.organization.login}/${githubApiResponses[0].repositoryData.name}`;
+		const firstWidgetTitle = `${gitHubRepository.id.organization}/${gitHubRepository.id.name}`;
 		const firstWidgetHeader = await screen.findByRole("heading", {
 			name: new RegExp(firstWidgetTitle, "i"),
 		});
@@ -39,19 +57,33 @@ describe("Dashboard section", () => {
 		});
 
 		render(<Dashboard />);
-
 		const noResults = await screen.findByText(new RegExp("No hay widgets configurados", "i"));
 
 		expect(noResults).toBeInTheDocument();
 	});
 
 	it("show last modified date in human readable format", async () => {
-		const mockedResponse = [...githubApiResponses];
-		mockedResponse[0].repositoryData.updated_at = new Date().toISOString();
+		const gitHubRepository: GitHubRepository = {
+			id: {
+				organization: "CodelyTv",
+				name: "dotly",
+			},
+			description: "🌚 Modular and easy to customize dotfiles framework",
+			url: "https://github.com/CodelyTV/dotly",
+			private: true,
+			forks: 132,
+			hasWorkflows: true,
+			isLastWorkflowSuccess: false,
+			stars: 4000,
+			issues: 12,
+			pullRequests: 1,
+			updatedAt: new Date(),
+			watchers: 134,
+		};
 
 		mockRepository.mockImplementationOnce(() => {
 			return {
-				search: () => Promise.resolve(githubApiResponses),
+				search: () => Promise.resolve([gitHubRepository]),
 			} as unknown as GitHubApiGitHubRepositoryRepository;
 		});
 
