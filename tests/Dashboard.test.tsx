@@ -15,16 +15,11 @@ describe("Dashboard section", () => {
 
 		render(<Dashboard repository={mockRepository} />);
 
-		const title = await screen.findByRole("heading", {
-			name: new RegExp("DevDash_", "i"),
-		});
-
 		const firstWidgetTitle = `${gitHubRepository.id.organization}/${gitHubRepository.id.name}`;
 		const firstWidgetHeader = await screen.findByRole("heading", {
 			name: new RegExp(firstWidgetTitle, "i"),
 		});
 
-		expect(title).toBeInTheDocument();
 		expect(firstWidgetHeader).toBeInTheDocument();
 	});
 
