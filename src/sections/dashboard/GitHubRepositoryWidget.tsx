@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { GitHubRepository } from "../../domain/GitHubRepository";
 import { ReactComponent as Check } from "./check.svg";
 import { ReactComponent as Error } from "./error.svg";
@@ -31,14 +33,9 @@ export function GitHubRepositoryWidget({ repository }: { repository: GitHubRepos
 		<article className={styles.widget}>
 			<header className={styles.widget__header}>
 				<h2 className={styles.widget__title}>
-					<a
-						href={repository.url}
-						target="_blank"
-						title={`${repository.id.organization}/${repository.id.name}`}
-						rel="noreferrer"
-					>
+					<Link to={`/repository/${repository.id.organization}/${repository.id.name}`}>
 						{repository.id.organization}/{repository.id.name}
-					</a>
+					</Link>
 				</h2>
 				{repository.private ? <Lock /> : <Unlock />}
 			</header>
