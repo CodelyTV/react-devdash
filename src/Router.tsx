@@ -1,15 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { config } from "./devdash_config";
-import { GitHubApiGitHubRepositoryRepository } from "./infrastructure/GitHubApiGitHubRepositoryRepository";
-import { Dashboard } from "./sections/dashboard/Dashboard";
-
-const repository = new GitHubApiGitHubRepositoryRepository(config.github_access_token);
+import { DashboardFactory } from "./sections/dashboard/DashboardFactory";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <Dashboard repository={repository} />,
+		element: DashboardFactory.create(),
 	},
 ]);
 
