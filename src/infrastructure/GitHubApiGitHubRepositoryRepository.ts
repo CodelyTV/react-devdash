@@ -19,6 +19,10 @@ export class GitHubApiGitHubRepositoryRepository implements GitHubRepositoryRepo
 		return Promise.all(responsePromises);
 	}
 
+	async byId(repositoryId: RepositoryId): Promise<GitHubRepository | undefined> {
+		return this.searchBy(repositoryId);
+	}
+
 	private async searchBy(repositoryId: RepositoryId): Promise<GitHubRepository> {
 		const repositoryRequests = this.endpoints
 			.map((endpoint) => endpoint.replace("$organization", repositoryId.organization))

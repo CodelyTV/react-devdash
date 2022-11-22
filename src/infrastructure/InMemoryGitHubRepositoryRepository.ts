@@ -1,4 +1,4 @@
-import { GitHubRepository } from "../domain/GitHubRepository";
+import { GitHubRepository, RepositoryId } from "../domain/GitHubRepository";
 import { GitHubRepositoryRepository } from "../domain/GitHubRepositoryRepository";
 import { githubApiResponses } from "../github_api_responses";
 
@@ -27,6 +27,17 @@ export class InMemoryGitHubRepositoryRepository implements GitHubRepositoryRepos
 					pullRequests: pullRequests.length,
 				};
 			})
+		);
+	}
+
+	async byId(repositoryId: RepositoryId): Promise<GitHubRepository | undefined> {
+		const repositories = await this.search();
+
+		return repositories.find(
+			(repositories) =>
+				repositories.id.name === repositoryId.name &&
+				repositories.id.organization &&
+				repositoryId.organization
 		);
 	}
 }
