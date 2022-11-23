@@ -3,6 +3,15 @@ export interface RepositoryId {
 	name: string;
 }
 
+export interface WorkFlowRunStatus {
+	id: number;
+	name: string;
+	title: string;
+	url: string;
+	createdAt: Date;
+	status: string;
+	conclusion: string;
+}
 export interface GitHubRepository {
 	id: RepositoryId;
 	url: string;
@@ -16,4 +25,5 @@ export interface GitHubRepository {
 	forks: number;
 	issues: number;
 	pullRequests: number;
+	workflowRunsStatus: WorkFlowRunStatus[];
 }

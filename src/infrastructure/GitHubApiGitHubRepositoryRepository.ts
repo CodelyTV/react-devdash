@@ -6,7 +6,7 @@ export class GitHubApiGitHubRepositoryRepository implements GitHubRepositoryRepo
 	private readonly endpoints = [
 		"https://api.github.com/repos/$organization/$name",
 		"https://api.github.com/repos/$organization/$name/pulls",
-		"https://api.github.com/repos/$organization/$name/actions/runs?page=1&per_page=1",
+		"https://api.github.com/repos/$organization/$name/actions/runs?page=1&per_page=10",
 	];
 
 	constructor(private readonly personalAccessToken: string) {}
@@ -47,7 +47,7 @@ export class GitHubApiGitHubRepositoryRepository implements GitHubRepositoryRepo
 						name: repositoryData.name,
 						organization: repositoryData.organization.login,
 					},
-					url: repositoryData.url,
+					url: repositoryData.html_url,
 					description: repositoryData.description,
 					private: repositoryData.private,
 					updatedAt: new Date(repositoryData.updated_at),
@@ -61,6 +61,15 @@ export class GitHubApiGitHubRepositoryRepository implements GitHubRepositoryRepo
 					forks: repositoryData.forks_count,
 					issues: repositoryData.open_issues_count,
 					pullRequests: pullRequests.length,
+					workflowRunsStatus: ciStatus.workflow_runs.map((run) => ({
+						id: run.id,
+						name: run.name,
+						title: run.display_title,
+						url: run.html_url,
+						createdAt: new Date(run.created_at),
+						status: run.status,
+						conclusion: run.conclusion,
+					})),
 				};
 			});
 	}
