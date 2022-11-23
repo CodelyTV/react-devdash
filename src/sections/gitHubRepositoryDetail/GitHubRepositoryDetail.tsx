@@ -63,36 +63,43 @@ export function GitHubRepositoryDetail({ repository }: { repository: GitHubRepos
 			</table>
 
 			<h3>Workflow runs status</h3>
-			<p>
-				⏱️Last workflow run:{" "}
-				{repositoryData.workflowRunsStatus[0].createdAt.toLocaleDateString("es-ES")}
-			</p>
-			<table className={styles.detail__table}>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Title</th>
-						<th>Date</th>
-						<th>Status</th>
-						<th>Conclusion</th>
-					</tr>
-				</thead>
-				<tbody>
-					{repositoryData.workflowRunsStatus.map((run) => (
-						<tr key={run.id}>
-							<td>{run.name}</td>
-							<td>
-								<a href={run.url} target="_blank" rel="noreferrer">
-									{run.title}
-								</a>
-							</td>
-							<td>{run.createdAt.toLocaleDateString("es-ES")}</td>
-							<td>{run.status}</td>
-							<td>{run.conclusion}</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
+
+			{repositoryData.workflowRunsStatus.length > 0 ? (
+				<>
+					<p>
+						⏱️Last workflow run:{" "}
+						{repositoryData.workflowRunsStatus[0].createdAt.toLocaleDateString("es-ES")}
+					</p>
+					<table className={styles.detail__table}>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Title</th>
+								<th>Date</th>
+								<th>Status</th>
+								<th>Conclusion</th>
+							</tr>
+						</thead>
+						<tbody>
+							{repositoryData.workflowRunsStatus.map((run) => (
+								<tr key={run.id}>
+									<td>{run.name}</td>
+									<td>
+										<a href={run.url} target="_blank" rel="noreferrer">
+											{run.title}
+										</a>
+									</td>
+									<td>{run.createdAt.toLocaleDateString("es-ES")}</td>
+									<td>{run.status}</td>
+									<td>{run.conclusion}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</>
+			) : (
+				<p>There are no workflow runs</p>
+			)}
 		</section>
 	);
 }
