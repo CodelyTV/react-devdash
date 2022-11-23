@@ -26,8 +26,17 @@ export function GitHubRepositoryDetail({ repository }: { repository: GitHubRepos
 					</h2>
 				</a>
 				{repositoryData.private ? <Lock /> : <Unlock />}
+
+				<button
+					onClick={() => {
+						throw new Error();
+					}}
+				>
+					dasdasd
+				</button>
 			</header>
 
+			<p>{3 / 0}</p>
 			<p>{repositoryData.description}</p>
 
 			<h3>Repository stats</h3>
@@ -54,6 +63,10 @@ export function GitHubRepositoryDetail({ repository }: { repository: GitHubRepos
 			</table>
 
 			<h3>Workflow runs status</h3>
+			<p>
+				⏱️Last workflow run:{" "}
+				{repositoryData.workflowRunsStatus[0].createdAt.toLocaleDateString("es-ES")}
+			</p>
 			<table className={styles.detail__table}>
 				<thead>
 					<tr>
