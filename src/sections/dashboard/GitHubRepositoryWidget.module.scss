@@ -21,13 +21,14 @@
 
   &__title {
     overflow: hidden;
+    color: #1a2233;
     font-weight: bold;
     font-size: 0.875rem;
     white-space: nowrap;
     text-overflow: ellipsis;
 
     a {
-      color: #1a2233;
+      color: inherit;
       text-decoration: none;
     }
   }
