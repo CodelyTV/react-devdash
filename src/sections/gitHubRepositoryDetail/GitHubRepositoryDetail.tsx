@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 
 import { ReactComponent as Lock } from "../../assets/svgs/lock.svg";
@@ -10,7 +9,8 @@ import { useGitHubRepository } from "./useGithubRepository";
 export function GitHubRepositoryDetail({ repository }: { repository: GitHubRepositoryRepository }) {
 	const { organization, name } = useParams() as { organization: string; name: string };
 
-	const repositoryId = useMemo(() => ({ name, organization }), [name, organization]);
+	// const repositoryId = useMemo(() => ({ name, organization }), [name, organization]);
+	const repositoryId = { name, organization };
 	const { repositoryData } = useGitHubRepository(repository, repositoryId);
 
 	if (!repositoryData) {
