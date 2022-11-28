@@ -8,14 +8,18 @@ export function useGitHubRepositories(
 	repositoryUrls: string[]
 ): {
 	repositoryData: GitHubRepository[];
+	isLoading: boolean;
 } {
 	const [repositoryData, setRepositoryData] = useState<GitHubRepository[]>([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
+		setIsLoading(true);
 		repository.search(repositoryUrls).then((repositoryData) => {
 			setRepositoryData(repositoryData);
+			setIsLoading(false);
 		});
 	}, [repository, repositoryUrls]);
 
-	return { repositoryData };
+	return { repositoryData, isLoading };
 }

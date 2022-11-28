@@ -11,11 +11,11 @@ export function Dashboard({ repository }: { repository: GitHubRepositoryReposito
 		return config.widgets.map((widget) => widget.repository_url);
 	}, []);
 
-	const { repositoryData } = useGitHubRepositories(repository, gitHubRepositoryUrls);
+	const { repositoryData, isLoading } = useGitHubRepositories(repository, gitHubRepositoryUrls);
 
 	return (
 		<>
-			{repositoryData.length === 0 ? (
+			{!isLoading && repositoryData.length === 0 ? (
 				<div className={styles.empty}>
 					<span>No hay widgets configurados.</span>
 				</div>
