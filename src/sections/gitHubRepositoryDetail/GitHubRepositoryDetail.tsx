@@ -26,14 +26,6 @@ export function GitHubRepositoryDetail({ repository }: { repository: GitHubRepos
 					</h2>
 				</a>
 				{repositoryData.private ? <Lock /> : <Unlock />}
-
-				<button
-					onClick={() => {
-						throw new Error();
-					}}
-				>
-					dasdasd
-				</button>
 			</header>
 
 			<p>{3 / 0}</p>
