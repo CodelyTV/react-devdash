@@ -29,7 +29,7 @@
 
 - `npm install`: Install dependencies
 - `cp .env.example .env`: Create the environment variables file based on the example template
-- `vim .env`: Specify your GitHub Personal access token ([how to get it](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) -> [your tokens](https://github.com/settings/tokens))
+- `vim .env`: Specify your GitHub Personal access token ([how to get it](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) -> [your tokens](https://github.com/settings/tokens) -> Enable `Repo.public_repo`)
 - `vim src/devdash_config.ts`: Set the repository URLs you want to show on your *DevDash_*
 - `npm start`: Run in dev mode on [localhost:3000](http://localhost:3000)
 - `npm run build`: Generate production build
