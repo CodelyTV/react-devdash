@@ -2,6 +2,7 @@ import { useMemo } from "react";
 
 import { config } from "../../devdash_config";
 import { GitHubRepositoryRepository } from "../../domain/GitHubRepositoryRepository";
+import { AddWidgetForm } from "./AddWidgetForm";
 import styles from "./Dashboard.module.scss";
 import { GitHubRepositoryWidget } from "./GitHubRepositoryWidget";
 import { useGitHubRepositories } from "./useGitHubRepositories";
@@ -16,25 +17,24 @@ export function Dashboard({ repository }: { repository: GitHubRepositoryReposito
 
 	return (
 		<>
-			{isLoading && (
-				<section className={styles.container}>
+			<section className={styles.container}>
+				{isLoading ? (
 					<WidgetsSkeleton numberOfWidgets={gitHubRepositoryUrls.length} />
-				</section>
-			)}
-
-			{!isLoading && repositoryData.length === 0 ? (
-				<div className={styles.empty}>
-					<span>No hay widgets configurados.</span>
-				</div>
-			) : (
-				<section className={styles.container}>
-					{repositoryData.map((repository) => (
+				) : (
+					repositoryData.map((repository) => (
 						<GitHubRepositoryWidget
 							key={`${repository.id.organization}/${repository.id.name}`}
 							repository={repository}
 						/>
-					))}
-				</section>
+					))
+				)}
+				<AddWidgetForm />
+			</section>
+
+			{!isLoading && repositoryData.length === 0 && (
+				<div className={styles.empty}>
+					<span>No hay widgets configurados.</span>
+				</div>
 			)}
 		</>
 	);
