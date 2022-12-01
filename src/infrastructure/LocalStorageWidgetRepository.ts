@@ -1,8 +1,8 @@
-import { Widget } from "../domain/Widget";
-import { WidgetRepository } from "../domain/WidgetRepository";
+import { RepositoryWidget } from "../domain/RepositoryWidget";
+import { RepositoryWidgetRepository } from "../domain/RepositoryWidgetRepository";
 
-export class LocalStorageWidgetRepository implements WidgetRepository {
-	async save(widget: Widget): Promise<void> {
+export class LocalStorageRepositoryWidgetRepository implements RepositoryWidgetRepository {
+	async save(widget: RepositoryWidget): Promise<void> {
 		await Promise.resolve();
 	}
 }

@@ -1,4 +1,4 @@
-export interface Widget {
+export interface RepositoryWidget {
 	id: string;
 	repositoryUrl: string;
 }

@@ -2,25 +2,25 @@ import { useMemo } from "react";
 
 import { config } from "../../devdash_config";
 import { GitHubRepositoryRepository } from "../../domain/GitHubRepositoryRepository";
-import { WidgetRepository } from "../../domain/WidgetRepository";
-import { AddWidgetForm } from "./AddWidgetForm";
+import { RepositoryWidgetRepository } from "../../domain/RepositoryWidgetRepository";
 import styles from "./Dashboard.module.scss";
-import { GitHubRepositoryWidget } from "./GitHubRepositoryWidget";
-import { useGitHubRepositories } from "./useGitHubRepositories";
-import { WidgetsSkeleton } from "./WidgetsSkeleton";
+import { GitHubRepositoryWidget } from "./gitHubRepositoryWidget/GitHubRepositoryWidget";
+import { useGitHubRepositories } from "./gitHubRepositoryWidget/useGitHubRepositories";
+import { AddRepositoryWidgetForm } from "./repositoryWidget/AddRepositoryWidgetForm";
+import { RepositoryWidgetsSkeleton } from "./repositoryWidget/RepositoryWidgetsSkeleton";
 
 export function Dashboard({
 	gitHubRepositoryRepository,
-	widgetRepository,
+	repositoryWidgetRepository,
 }: {
 	gitHubRepositoryRepository: GitHubRepositoryRepository;
-	widgetRepository: WidgetRepository;
+	repositoryWidgetRepository: RepositoryWidgetRepository;
 }) {
 	const gitHubRepositoryUrls = useMemo(() => {
 		return config.widgets.map((widget) => widget.repository_url);
 	}, []);
 
-	const { repositoryData, isLoading } = useGitHubRepositories(
+	const { gitHubRepositories, isLoading } = useGitHubRepositories(
 		gitHubRepositoryRepository,
 		gitHubRepositoryUrls
 	);
@@ -29,19 +29,19 @@ export function Dashboard({
 		<>
 			<section className={styles.container}>
 				{isLoading ? (
-					<WidgetsSkeleton numberOfWidgets={gitHubRepositoryUrls.length} />
+					<RepositoryWidgetsSkeleton numberOfWidgets={gitHubRepositoryUrls.length} />
 				) : (
-					repositoryData.map((repository) => (
+					gitHubRepositories.map((repository) => (
 						<GitHubRepositoryWidget
 							key={`${repository.id.organization}/${repository.id.name}`}
 							repository={repository}
 						/>
 					))
 				)}
-				<AddWidgetForm repository={widgetRepository} />
+				<AddRepositoryWidgetForm repository={repositoryWidgetRepository} />
 			</section>
 
-			{!isLoading && repositoryData.length === 0 && (
+			{!isLoading && gitHubRepositories.length === 0 && (
 				<div className={styles.empty}>
 					<span>No hay widgets configurados.</span>
 				</div>

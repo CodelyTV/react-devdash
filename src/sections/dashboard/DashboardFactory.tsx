@@ -2,20 +2,20 @@ import React from "react";
 
 import { config } from "../../devdash_config";
 import { GitHubApiGitHubRepositoryRepository } from "../../infrastructure/GitHubApiGitHubRepositoryRepository";
-import { LocalStorageWidgetRepository } from "../../infrastructure/LocalStorageWidgetRepository";
+import { LocalStorageRepositoryWidgetRepository } from "../../infrastructure/LocalStorageWidgetRepository";
 import { Dashboard } from "./Dashboard";
 
 const gitHubRepositoryRepository = new GitHubApiGitHubRepositoryRepository(
 	config.github_access_token
 );
-const widgetRepository = new LocalStorageWidgetRepository();
+const repositoryWidgetRepository = new LocalStorageRepositoryWidgetRepository();
 
 export class DashboardFactory {
 	static create(): React.ReactElement {
 		return (
 			<Dashboard
 				gitHubRepositoryRepository={gitHubRepositoryRepository}
-				widgetRepository={widgetRepository}
+				repositoryWidgetRepository={repositoryWidgetRepository}
 			/>
 		);
 	}

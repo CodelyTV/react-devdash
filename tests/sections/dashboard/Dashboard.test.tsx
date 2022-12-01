@@ -2,13 +2,13 @@ import { screen } from "@testing-library/react";
 import { mock } from "jest-mock-extended";
 
 import { GitHubRepositoryRepository } from "../../../src/domain/GitHubRepositoryRepository";
-import { WidgetRepository } from "../../../src/domain/WidgetRepository";
+import { RepositoryWidgetRepository } from "../../../src/domain/RepositoryWidgetRepository";
 import { Dashboard } from "../../../src/sections/dashboard/Dashboard";
 import { GitHubRepositoryMother } from "../../GitHubRepositoryMother";
 import { renderWithRouter } from "../../renderWithRouter";
 
 const mockGitHubRepositoryRepository = mock<GitHubRepositoryRepository>();
-const mockWidgetRepository = mock<WidgetRepository>();
+const mockWidgetRepository = mock<RepositoryWidgetRepository>();
 
 describe("Dashboard section", () => {
 	it("show all widgets", async () => {
@@ -19,7 +19,7 @@ describe("Dashboard section", () => {
 		renderWithRouter(
 			<Dashboard
 				gitHubRepositoryRepository={mockGitHubRepositoryRepository}
-				widgetRepository={mockWidgetRepository}
+				widgetRepositoryRepository={mockWidgetRepository}
 			/>
 		);
 
@@ -37,7 +37,7 @@ describe("Dashboard section", () => {
 		renderWithRouter(
 			<Dashboard
 				gitHubRepositoryRepository={mockGitHubRepositoryRepository}
-				widgetRepository={mockWidgetRepository}
+				widgetRepositoryRepository={mockWidgetRepository}
 			/>
 		);
 
@@ -54,7 +54,7 @@ describe("Dashboard section", () => {
 		renderWithRouter(
 			<Dashboard
 				gitHubRepositoryRepository={mockGitHubRepositoryRepository}
-				widgetRepository={mockWidgetRepository}
+				widgetRepositoryRepository={mockWidgetRepository}
 			/>
 		);
 

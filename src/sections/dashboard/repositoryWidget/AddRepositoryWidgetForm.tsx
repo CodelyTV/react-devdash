@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 
-import { ReactComponent as Add } from "../../assets/svgs/add.svg";
-import { WidgetRepository } from "../../domain/WidgetRepository";
-import styles from "./AddWidgetForm.module.scss";
+import { ReactComponent as Add } from "../../../assets/svgs/add.svg";
+import { RepositoryWidgetRepository } from "../../../domain/RepositoryWidgetRepository";
+import styles from "./AddRepositoryWidgetForm.module.scss";
 
 type AddWidgetSubmitFormEvent = React.FormEvent<HTMLFormElement> & {
 	target: { id: { value: string }; repositoryUrl: { value: string } };
 };
 
-export function AddWidgetForm({ repository }: { repository: WidgetRepository }) {
+export function AddRepositoryWidgetForm({
+	repository,
+}: {
+	repository: RepositoryWidgetRepository;
+}) {
 	const [isFormActive, setIsFormActive] = useState(false);
 
 	const submitForm = async (ev: AddWidgetSubmitFormEvent) => {

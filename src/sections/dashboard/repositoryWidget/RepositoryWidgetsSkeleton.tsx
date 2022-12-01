@@ -1,13 +1,13 @@
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-import { ReactComponent as PullRequests } from "../../assets/svgs/git-pull-request.svg";
-import { ReactComponent as IssueOpened } from "../../assets/svgs/issue-opened.svg";
-import { ReactComponent as Forks } from "../../assets/svgs/repo-forked.svg";
-import { ReactComponent as Start } from "../../assets/svgs/star.svg";
-import { ReactComponent as Watchers } from "../../assets/svgs/watchers.svg";
-import styles from "./GitHubRepositoryWidget.module.scss";
+import { ReactComponent as PullRequests } from "../../../assets/svgs/git-pull-request.svg";
+import { ReactComponent as IssueOpened } from "../../../assets/svgs/issue-opened.svg";
+import { ReactComponent as Forks } from "../../../assets/svgs/repo-forked.svg";
+import { ReactComponent as Start } from "../../../assets/svgs/star.svg";
+import { ReactComponent as Watchers } from "../../../assets/svgs/watchers.svg";
+import styles from "./RepositoryWidget.module.scss";
 
-function WidgetSkeleton() {
+function RepositoryWidgetSkeleton() {
 	return (
 		<article className={styles.widget}>
 			<header
@@ -60,11 +60,11 @@ function WidgetSkeleton() {
 	);
 }
 
-export function WidgetsSkeleton({ numberOfWidgets }: { numberOfWidgets: number }) {
+export function RepositoryWidgetsSkeleton({ numberOfWidgets }: { numberOfWidgets: number }) {
 	return (
 		<SkeletonTheme baseColor="#1A2233" highlightColor="#535966">
 			{[...new Array(numberOfWidgets)].map((_, i) => (
-				<WidgetSkeleton key={i} />
+				<RepositoryWidgetSkeleton key={i} />
 			))}
 		</SkeletonTheme>
 	);
