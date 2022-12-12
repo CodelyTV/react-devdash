@@ -24,6 +24,8 @@ describe("AddWidgetForm", () => {
 	});
 
 	it("save new widget when form is submitted", async () => {
+		mockRepository.search.mockResolvedValue([]);
+
 		const newWidget: RepositoryWidget = {
 			id: "newWidgetId",
 			repositoryUrl: "https://github.com/CodelyTV/DevDash",
