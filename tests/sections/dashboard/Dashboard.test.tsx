@@ -19,7 +19,7 @@ describe("Dashboard section", () => {
 		renderWithRouter(
 			<Dashboard
 				gitHubRepositoryRepository={mockGitHubRepositoryRepository}
-				widgetRepositoryRepository={mockWidgetRepository}
+				repositoryWidgetRepository={mockWidgetRepository}
 			/>
 		);
 
@@ -37,7 +37,7 @@ describe("Dashboard section", () => {
 		renderWithRouter(
 			<Dashboard
 				gitHubRepositoryRepository={mockGitHubRepositoryRepository}
-				widgetRepositoryRepository={mockWidgetRepository}
+				repositoryWidgetRepository={mockWidgetRepository}
 			/>
 		);
 
@@ -54,7 +54,7 @@ describe("Dashboard section", () => {
 		renderWithRouter(
 			<Dashboard
 				gitHubRepositoryRepository={mockGitHubRepositoryRepository}
-				widgetRepositoryRepository={mockWidgetRepository}
+				repositoryWidgetRepository={mockWidgetRepository}
 			/>
 		);
 
