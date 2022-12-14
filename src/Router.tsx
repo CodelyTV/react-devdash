@@ -11,7 +11,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: "/",
-				element: DashboardFactory.create(),
+				element: <DashboardFactory />,
 			},
 			{
 				path: "/repository/:organization/:name",
