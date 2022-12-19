@@ -48,7 +48,7 @@ export function AddRepositoryWidgetForm({
 						</div>
 
 						{hasAlreadyExistsError && (
-							<p role="alert" aria-describedby="duplicated-error">
+							<p className={styles.error} role="alert" aria-describedby="duplicated-error">
 								<span id="duplicated-error">Repositorio duplicado</span>
 							</p>
 						)}

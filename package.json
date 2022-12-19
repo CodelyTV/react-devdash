@@ -70,7 +70,8 @@
 					"testing-library/await-async-query": 0,
 					"@typescript-eslint/no-unsafe-member-access": 0,
 					"@typescript-eslint/no-unsafe-call": 0,
-					"testing-library/prefer-screen-queries": 0
+					"testing-library/prefer-screen-queries": 0,
+					"@typescript-eslint/no-unsafe-assignment": 0
 				}
 			}
 		]
