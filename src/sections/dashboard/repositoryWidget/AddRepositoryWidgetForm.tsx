@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 
 import { ReactComponent as Add } from "../../../assets/svgs/add.svg";
+import { FormEvent } from "../../../domain/FormEvent";
 import { RepositoryWidgetRepository } from "../../../domain/RepositoryWidgetRepository";
 import styles from "./AddRepositoryWidgetForm.module.scss";
 import { useAddRepositoryWidget } from "./useAddRepositoryWidget";
-
-type FormEvent<T> = React.FormEvent<HTMLFormElement> & {
-	target: { elements: { [key in keyof T]: { value: T[key] } } };
-};
 
 type FormFields = { id: string; repositoryUrl: string };
 

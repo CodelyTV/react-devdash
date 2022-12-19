@@ -1,33 +1,13 @@
-.add_widget {
-  min-height: 14.25rem;
-  color: white;
-  background-color: #4f5562;
-
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-
-  .add_button {
-    font-size: 1rem;
-    background-color: transparent;
-    border: 0;
-
-    p {
-      margin-top: 0.1rem;
-      color: white;
-    }
-  }
+.config {
+  width: 80%;
+  max-width: 500px;
+  margin: 2rem auto;
 
   .form {
-    width: 100%;
-    padding: 1rem;
-
     label {
       display: block;
       margin-bottom: 0.5rem;
+      font-weight: bold;
       font-size: 1rem;
     }
 
@@ -41,6 +21,7 @@
     }
 
     input[type="submit"] {
+      margin-top: 1rem;
       padding: 0.5rem 1rem;
       color: #1a2233;
       font-weight: bold;
@@ -51,10 +32,10 @@
     }
   }
 
-  .error {
-    padding: 0.25rem;
-    color: black;
-    background-color: #f83d32;
+  .callout {
+    padding: 1rem;
+    font-weight: bold;
+    background-color: #3cff64;
     border-radius: 0.25rem;
   }
 }
