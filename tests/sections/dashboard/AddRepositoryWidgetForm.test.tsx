@@ -3,10 +3,10 @@ import userEvent from "@testing-library/user-event";
 import { mock } from "jest-mock-extended";
 
 import { RepositoryWidget } from "../../../src/domain/RepositoryWidget";
-import { LocalStorageRepositoryWidgetRepository } from "../../../src/infrastructure/LocalStorageWidgetRepository";
+import { RepositoryWidgetRepository } from "../../../src/domain/RepositoryWidgetRepository";
 import { AddRepositoryWidgetForm } from "../../../src/sections/dashboard/repositoryWidget/AddRepositoryWidgetForm";
 
-const mockRepository = mock<LocalStorageRepositoryWidgetRepository>();
+const mockRepository = mock<RepositoryWidgetRepository>();
 
 describe("AddWidgetForm", () => {
 	it("show widget form when add button is clicked", async () => {
